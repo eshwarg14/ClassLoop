@@ -69,3 +69,6 @@ dist/
 # Operating System files
 .DS_Store
 Thumbs.db
+
+# Netlify CLI local state
+.netlify/

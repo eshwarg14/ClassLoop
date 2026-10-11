@@ -2,6 +2,7 @@
 
 > **Ambient lecture intelligence powered by Omi wearable hardware, Qdrant vector memory, and Lyzr multi-agent orchestration.**
 
+[![Live Demo on Netlify](https://img.shields.io/badge/Live_Demo-classloop--observatory.netlify.app-00C7B7.svg?logo=netlify&logoColor=white)](https://classloop-observatory.netlify.app)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![React 18](https://img.shields.io/badge/React-18.3-61DAFB.svg?logo=react&logoColor=black)](https://react.dev)
@@ -9,6 +10,8 @@
 [![Qdrant](https://img.shields.io/badge/Qdrant-Vector_Memory-DC2626.svg?logo=qdrant&logoColor=white)](https://qdrant.tech/)
 [![Lyzr](https://img.shields.io/badge/Lyzr-Multi--Agent_Swarm-6C7BFF.svg)](https://www.lyzr.ai/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+> **Live Deployment (Netlify)**: [https://classloop-observatory.netlify.app](https://classloop-observatory.netlify.app)
 
 ClassLoop listens to live lectures through the [Omi](https://omi.me) wearable pendant, detects the exact moments students experience cognitive friction, and acts autonomously the moment the lecture ends. Using [Lyzr Studio](https://www.lyzr.ai/) agents for reasoning and [Qdrant](https://qdrant.tech/) as shared semantic memory, ClassLoop synthesizes confusion-weighted study notes with plain-English analogies, generates a cited active-recall quiz, builds an Ebbinghaus spaced-repetition schedule exported as a standard `.ics` calendar file, and links concepts across earlier lectures.
 
