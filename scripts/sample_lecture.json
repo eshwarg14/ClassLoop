@@ -1,0 +1,187 @@
+{
+  "lecture_title": "Operating Systems: Deadlock Fundamentals, Prevention, and Recovery",
+  "course": "CS 301 Operating Systems",
+  "total_duration_seconds": 600.0,
+  "segments": [
+    {
+      "id": "seg_001",
+      "session_id": "session_demo_001",
+      "text": "Good morning, everyone. Welcome back to Operating Systems. Today we're diving into Chapter 7: Deadlocks, one of the most critical synchronization challenges in concurrent system design.",
+      "speaker": "lecturer",
+      "start": 0.0,
+      "end": 28.5,
+      "is_user": false
+    },
+    {
+      "id": "seg_002",
+      "session_id": "session_demo_001",
+      "text": "To kick things off, let's establish a precise definition. In a multiprogramming environment, a deadlock occurs when a set of blocked processes each hold a resource and wait to acquire a resource held by another process in the same set.",
+      "speaker": "lecturer",
+      "start": 30.0,
+      "end": 58.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_003",
+      "session_id": "session_demo_001",
+      "text": "Think about a classic real-world analogy: two trains approaching each other on a single track. Neither train can move forward because the other train blocks the shared track section. Neither can back up either.",
+      "speaker": "lecturer",
+      "start": 60.0,
+      "end": 88.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_004",
+      "session_id": "session_demo_001",
+      "text": "In 1971, Edward Coffman identified that a deadlock can arise if and only if four fundamental conditions hold simultaneously in a system. These are famously known as the Coffman Conditions.",
+      "speaker": "lecturer",
+      "start": 91.5,
+      "end": 119.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_005",
+      "session_id": "session_demo_001",
+      "text": "Condition number one is Mutual Exclusion: at least one resource must be held in a non-shareable mode. That means only one process at a time can use the resource. If another process requests it, it must wait.",
+      "speaker": "lecturer",
+      "start": 121.0,
+      "end": 149.5,
+      "is_user": false
+    },
+    {
+      "id": "seg_006",
+      "session_id": "session_demo_001",
+      "text": "Condition two is Hold and Wait: a process must currently be holding at least one resource while waiting to acquire additional resources that are currently held by other processes.",
+      "speaker": "lecturer",
+      "start": 152.0,
+      "end": 178.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_007",
+      "session_id": "session_demo_001",
+      "text": "Condition three is No Preemption: resources cannot be forcibly seized from a process holding them. A resource can only be released voluntarily by the process after it has finished its designated task.",
+      "speaker": "lecturer",
+      "start": 180.5,
+      "end": 207.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_008",
+      "session_id": "session_demo_001",
+      "text": "Wait, Professor, quick question: does mutual exclusion apply to read-only files as well, or just resources that require exclusive writes like printers and database records?",
+      "speaker": "student",
+      "start": 209.0,
+      "end": 222.5,
+      "is_user": true
+    },
+    {
+      "id": "seg_009",
+      "session_id": "session_demo_001",
+      "text": "Great question, Sarah. Read-only files are shareable resources, so multiple concurrent reads never cause a deadlock. Mutual exclusion specifically applies to non-shareable resources.",
+      "speaker": "lecturer",
+      "start": 223.5,
+      "end": 248.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_010",
+      "session_id": "session_demo_001",
+      "text": "Now, the fourth and decisive condition is Circular Wait. There exists a closed chain of processes P0 through Pn, such that P0 is waiting for a resource held by P1, P1 is waiting for P2, and Pn is waiting for a resource held by P0.",
+      "speaker": "lecturer",
+      "start": 251.0,
+      "end": 282.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_011",
+      "session_id": "session_demo_001",
+      "text": "We represent this structurally using Resource-Allocation Graphs (RAGs), where directed edges denote resource request and resource assignment. If a RAG contains no cycles, no deadlock is possible.",
+      "speaker": "lecturer",
+      "start": 285.0,
+      "end": 314.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_012",
+      "session_id": "session_demo_001",
+      "text": "In other words, while a cycle in a single-instance resource graph is both necessary and sufficient for deadlock, in multi-instance resource systems, a cycle is a necessary condition, but not alone sufficient.",
+      "speaker": "lecturer",
+      "start": 317.0,
+      "end": 348.5,
+      "is_user": false
+    },
+    {
+      "id": "seg_013",
+      "session_id": "session_demo_001",
+      "text": "Moving on to strategy: how do operating systems deal with deadlocks? There are four major approaches: Deadlock Prevention, Deadlock Avoidance, Deadlock Detection and Recovery, and the Ostrich Algorithm.",
+      "speaker": "lecturer",
+      "start": 351.0,
+      "end": 381.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_014",
+      "session_id": "session_demo_001",
+      "text": "Prevention works by eliminating at least one of the four Coffman conditions by design. For example, we eliminate Circular Wait by enforcing a strict global ordering on all resource types and requiring processes to request them in ascending order.",
+      "speaker": "lecturer",
+      "start": 384.0,
+      "end": 416.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_015",
+      "session_id": "session_demo_001",
+      "text": "By enforcing an increasing linear order F(R), a circular dependency cycle is mathematically impossible to form. Does that make sense?",
+      "speaker": "lecturer",
+      "start": 418.5,
+      "end": 435.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_016",
+      "session_id": "session_demo_001",
+      "text": "With Deadlock Avoidance, the OS dynamically inspects resource allocation state. The most famous algorithm here is Dijkstra's Banker's Algorithm, which guarantees the system stays in a provably 'safe state'.",
+      "speaker": "lecturer",
+      "start": 438.0,
+      "end": 469.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_017",
+      "session_id": "session_demo_001",
+      "text": "In the Banker's Algorithm, whenever a process requests resources, the OS evaluates whether granting the request immediately could lead to an unsafe state where claims exceed available vectors.",
+      "speaker": "lecturer",
+      "start": 472.0,
+      "end": 501.5,
+      "is_user": false
+    },
+    {
+      "id": "seg_018",
+      "session_id": "session_demo_001",
+      "text": "Let me mark this as confusing: students often conflate an unsafe state with a deadlocked state. An unsafe state is NOT necessarily a deadlock; rather, an unsafe state is one that has the potential to lead to a deadlock if processes request their maximum claims.",
+      "speaker": "lecturer",
+      "start": 504.0,
+      "end": 536.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_019",
+      "session_id": "session_demo_001",
+      "text": "Finally, when prevention or avoidance is too expensive, systems employ Detection and Recovery. We run wait-for graph cycle detection periodically, and recover by either terminating processes or preemption with checkpoint rollbacks.",
+      "speaker": "lecturer",
+      "start": 539.0,
+      "end": 571.0,
+      "is_user": false
+    },
+    {
+      "id": "seg_020",
+      "session_id": "session_demo_001",
+      "text": "Most modern general-purpose operating systems like Linux and Windows actually rely on the Ostrich algorithm for general processes: ignoring the problem because the overhead of continuous avoidance exceeds the rare cost of rebooting or killing a hung task. We will continue this on Thursday.",
+      "speaker": "lecturer",
+      "start": 573.5,
+      "end": 600.0,
+      "is_user": false
+    }
+  ]
+}

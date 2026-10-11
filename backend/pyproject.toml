@@ -1,0 +1,66 @@
+[project]
+name = "classloop-backend"
+version = "0.1.0"
+description = "ClassLoop Backend - Intelligent Lecture Processing Engine"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "sqlalchemy[asyncio]>=2.0.23",
+    "alembic>=1.13.0",
+    "aiosqlite>=0.19.0",
+    "asyncpg>=0.29.0",
+    "httpx>=0.25.0",
+    "structlog>=23.2.0",
+    "python-dotenv>=1.0.0",
+    "sse-starlette>=1.8.0",
+    "cryptography>=41.0.0",
+    "icalendar>=5.0.0",
+    "qdrant-client>=1.7.0",
+    "fastembed>=0.1.0",
+    "slowapi>=0.1.9",
+    "python-multipart>=0.0.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.25.0",
+    "ruff>=0.1.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    "E501", # line too long (handled by formatter)
+    "B008", # do not perform function calls in argument defaults (FastAPI Depends)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
