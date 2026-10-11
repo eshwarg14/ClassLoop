@@ -17,7 +17,7 @@ ClassLoop listens to live lectures through the [Omi](https://omi.me) wearable pe
 
 The entire platform runs as a single lightweight process (one `uvicorn` worker serving the FastAPI backend, the async SQLite-backed job runner, SSE live streams, and the compiled React Observatory UI) with zero Docker or Redis dependencies.
 
-![ClassLoop Live Observatory Stream](docs/sc/Live.png)
+![ClassLoop Observatory Overview](docs/sc/Overview.png)
 
 ---
 
@@ -70,32 +70,37 @@ The entire platform runs as a single lightweight process (one `uvicorn` worker s
 
 ## 2. Visual Walkthrough & Screenshots
 
-### A. Live Observatory & Real-Time Confusion Telemetry
+### A. Observatory Command Center & Interactive Onboarding
+Upon launching ClassLoop, the **Observatory Overview** presents an interactive 4-step readiness checklist (Omi Webhook, Qdrant Vector DB, Lyzr Pipeline Agents, and Interactive Demo Replay), one-click **Simulate Live Stream** and **Instant Full Demo** actions, and live telemetry cards.
+
+![ClassLoop Observatory Overview](docs/sc/Overview.png)
+
+### B. Live Observatory & Real-Time Confusion Telemetry
 During a live or simulated session, the **Live Observatory** displays the 4-card telemetry strip, audio ingestion waveform, radial confusion gauge, 60-chunk historical trend sparkline, and streaming transcript cards annotated with detected confusion triggers (`QUESTION`, `PAUSE`, `REPHRASE`).
 
 ![Live Observatory Dashboard](docs/sc/Live.png)
 
-### B. Autonomous Multi-Agent Pipeline Execution Trace
+### C. Autonomous Multi-Agent Pipeline Execution Trace
 When a lecture concludes, the **Pipeline Flow** view visualizes the 4-agent DAG (`Orchestrator -> Detector -> Content -> Scheduler`) in real time, displaying execution status, step latency in milliseconds, and inspectable JSON input/output payloads for every agent.
 
 ![Autonomous Pipeline Execution Trace](docs/sc/Pipeline%20Flow.png)
 
-### C. Confusion Heatmap Timeline & Synthesized Study Notes
+### D. Confusion Heatmap Timeline & Synthesized Study Notes
 The **Lecture Review** page features an interactive color-coded confusion heatmap scrubber (`00:00` to `10:00`) paired with synthesized Markdown notes. High-confusion concepts automatically receive an **Explained Simply** callout block and one-click `.md` export.
 
 ![Synthesized Study Notes and Heatmap](docs/sc/Notes.png)
 
-### D. Confusion-Weighted Active Recall Quiz with Citations
+### E. Confusion-Weighted Active Recall Quiz with Citations
 The **Quiz** tab tests comprehension on the highest-confusion segments of the lecture. Selecting an option provides instant grading, a conceptual explanation, and a **View Transcript Citation** link to the exact moment in the lecture.
 
 ![Interactive Active Recall Quiz](docs/sc/Quiz.png)
 
-### E. 14-Day Spaced Repetition Horizon & `.ics` Calendar Export
+### F. 14-Day Spaced Repetition Horizon & `.ics` Calendar Export
 The **Revision** tab maps out a 14-day spaced-repetition horizon (`Day +1`, `Day +3`, `Day +7`) alongside prioritized review milestones (`HIGH PRIORITY`, `MEDIUM`, `NORMAL`) and a one-click **Export .ics Calendar** download button.
 
 ![Spaced Repetition Calendar](docs/sc/Revision%20Calender.png)
 
-### F. Ask Intel: Cited Multi-Lecture RAG Q&A
+### G. Ask Intel: Cited Multi-Lecture RAG Q&A
 The **Ask Intel** page lets students query either the current lecture or their entire Qdrant knowledge base. Every response is grounded in retrieved vector chunks and accompanied by verbatim **Grounding Citations** with lecture timestamps.
 
 ![Ask Intel Cited RAG Q&A](docs/sc/RAG.png)

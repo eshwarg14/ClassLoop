@@ -2,7 +2,6 @@
 name = "classloop-backend"
 version = "0.1.0"
 description = "ClassLoop Backend - Intelligent Lecture Processing Engine"
-readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.104.0",
@@ -36,6 +35,10 @@ dev = [
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
 
 [tool.ruff]
 line-length = 100

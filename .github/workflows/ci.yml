@@ -22,24 +22,23 @@ jobs:
         with:
           python-version: "3.11"
           cache: "pip"
+          cache-dependency-path: backend/pyproject.toml
 
       - name: Install backend dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ruff pytest
-          if [ -f backend/pyproject.toml ] || [ -f backend/setup.py ]; then
-            pip install -e backend
-          elif [ -f backend/requirements.txt ]; then
-            pip install -r backend/requirements.txt
-          fi
+          pip install -e "backend[dev]"
 
       - name: Lint with ruff
         run: |
           ruff check backend
 
       - name: Run backend tests with pytest
+        env:
+          PYTHONPATH: backend
+          DEMO_MODE: "true"
         run: |
-          pytest backend/tests
+          pytest backend/tests -v
 
   frontend-checks:
     name: Frontend Typecheck and Build
