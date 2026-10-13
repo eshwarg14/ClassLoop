@@ -193,7 +193,15 @@ Each scheduled review is compiled into a standard RFC-5545 `VCALENDAR` / `VEVENT
 - **Python 3.11+**
 - **Node.js 18+** and **npm**
 
-### Option A: Windows PowerShell (No `make` required)
+### Option A: One-Click Windows Launcher (Double-Click)
+Simply double-click [`run.bat`](run.bat) (or [`start.bat`](start.bat)) in the repository root directory. The script automatically:
+1. Initializes `.env` from `.env.example` if not present.
+2. Detects your Python runtime.
+3. Verifies that the built React Observatory UI exists in `frontend/dist` (or builds it if missing).
+4. Launches the single-process backend (`uvicorn app.main:app` on port 8080).
+5. Opens your default web browser directly to `http://localhost:8080`.
+
+### Option B: Windows PowerShell (Manual Terminal)
 ```powershell
 # 1. Run automated setup (creates .env, Python .venv, installs backend & frontend packages, runs Alembic migrations)
 powershell -ExecutionPolicy Bypass -File .\scripts\setup.ps1
@@ -208,7 +216,7 @@ $env:PYTHONPATH="backend"
 .\backend\.venv\Scripts\python.exe -m uvicorn app.main:app --host 0.0.0.0 --port 8080
 ```
 
-### Option B: macOS / Linux (Using `Makefile` or `setup.sh`)
+### Option C: macOS / Linux (Using `Makefile` or `setup.sh`)
 ```bash
 cp .env.example .env
 make setup
